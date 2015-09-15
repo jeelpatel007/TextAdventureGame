@@ -70,3 +70,6 @@ def start():
 		dead("You stumble around the room until you starve.")
 		
 start()
+
+def test:
+    pass
