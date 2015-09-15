@@ -72,4 +72,4 @@ def start():
 start()
 
 def test:
-    pass
+    print 'hi baba' 
