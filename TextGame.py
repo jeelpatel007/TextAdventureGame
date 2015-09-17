@@ -22,7 +22,7 @@ def bear_room():
 	print "How are you going to move the bear?"
 	bear_moved = False
 
-	while True:
+	while 'whatsup':
 		choice = raw_input("> ")
 
 		if choice == "take honey":
@@ -37,31 +37,31 @@ def bear_room():
 		else:
 			print "I got no idea what that means."
 
-def dragon_room():
-	print "\n Here you see the great evil flying Dragon."
-	print "\n He, it, whatever stares at you and you go insane."
-	print "\n What you'll do now?"
-	print "\n Throw something at the Dragon?"
-	print "\t (Target the Eye, if you miss it then dragon will eat you up!)"
-	print "\n Or maybe try to be friend with the dragon!"
-	print "\t (Might accept or eat you up!)"
-	print "\nThrow or Friend?"
+def dragon_room(choice=None):
+	if choice is None:
+		print "\n Here you see the great evil flying Dragon."
+		print "\n He, it, whatever stares at you and you go insane."
+		print "\n What you'll do now?"
+		print "\n Throw something at the Dragon?"
+		print "\t (Target the Eye, if you miss it then dragon will eat you up!)"
+		print "\n Or maybe try to be friend with the dragon!"
+		print "\t (Might accept or eat you up!)"
+		print "\nThrow or Friend?"
+		choice = raw_input("\n> ")
 
-	choice = raw_input("\n> ")
-
-	a = bool(random.choice([True,False]))
+	a = random.choice([True,False])
 
 	if "throw" in choice:
-		if a == True:
+		if a:
 			print "\n Good Shot! Dragon down!"
 			print "\n You entered a new room now"
 			gold_room()
-		elif a == False:
+		else:
 			print "\n Ouch! Missed the target!"
 			dead("\n Dragon eats you up!")
 
 	elif "friend" in choice:
-		if a == True:
+		if a:  # boolean context
 			print "\n Well Done!"
 			print "\n You've got a brand new Friend!"
 			print "\n Now you entered a new room"
@@ -77,7 +77,7 @@ def dragon_room():
 				choice = raw_input("\n Choose one of [%s]: " %", ".join(choices))
 			return choice
 		choice = get_choice(["friend","throw"])
-		print choice
+		dragon_room(choice)
 
 		print "I got no idea what that means."
 
